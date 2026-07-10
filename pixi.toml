@@ -5,9 +5,6 @@ name = "CodonFM"
 platforms = [{ platform = "linux-64", cuda = "12" }]
 version = "0.1.0"
 
-[system-requirements]
-cuda = "12"
-
 [tasks]
 hf-download = "hf download"
 hf-login = "hf login"
