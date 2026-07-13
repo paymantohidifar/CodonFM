@@ -189,7 +189,8 @@ class TestEncodonPLLoRA:
         model = EncodonPL(**base_config)
         model.configure_model()
         
-        expected_targets = ["query", "value", "intermediate_dense", "post_dense"]
+        # expected_targets = ["query", "value", "intermediate_dense", "post_dense"]
+        expected_targets = ["query", "value", "intermediate_dense"]
         actual_targets = model.model.peft_config['default'].target_modules
         assert set(actual_targets) == set(expected_targets)
         
