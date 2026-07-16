@@ -36,3 +36,4 @@ pyfaidx==0.8.1.4
 biopython==1.85
 peft==0.15.2
 fiddle==0.3.0
+-e .
