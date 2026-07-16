@@ -1,0 +1,63 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[project]
+name = "CodonFM"
+version = "0.1.0"
+description = "CodonFM"
+readme = "README.md"
+requires-python = "==3.11.*"
+dependencies = [
+    # --------- pytorch ---------
+    "torch==2.5.1",
+    "torchvision==0.20.1",
+    "lightning==2.5.2",
+    "torchmetrics==1.8.0",
+
+    # --------- hydra ---------
+    "hydra-core==1.3.2",
+    "hydra-colorlog==1.2.0",
+    "hydra-optuna-sweeper==1.2.0",
+
+    # --------- loggers ---------
+    "wandb==0.21.0",
+
+    # --------- others ---------
+    "rootutils==1.0.7",
+    "pre-commit==4.0.1",
+    "rich==13.9.4",
+    "pytest==8.1.1",
+    "sh==2.2.2; sys_platform != 'win32'", # sh is unix-only
+    "transformers==4.54.1",
+    "polars==1.12.0",
+    "ninja==1.11.1.1",
+    "einops==0.8.0",
+    "ipython-autotime==0.3.2",
+    "seaborn==0.13.2",
+    "lru-dict==1.3.0",
+    "datasets==4.0.0",
+    "scanpy==1.11.3",
+    "pyfaidx==0.8.1.4",
+    "biopython==1.85",
+    "peft==0.15.2",
+    "fiddle==0.3.0",
+    
+    # xformers is locked to cu124 index source below
+    "xformers==0.0.28.post3", 
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+# --- UV Engine Hardware Resolution Mapping ---
+[tool.uv]
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
+
+[tool.uv.sources]
+xformers = [
+    { index = "pytorch-cu124" }
+]
