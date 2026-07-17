@@ -103,7 +103,7 @@ def main():
         
         subprocess.run(
             [
-                "python", "/workspace/data_scripts/preprocess_validation.py",
+                "python", "data_scripts/preprocess_validation.py",
                 "-i", str(input_path),
                 "-o", str(output_path),
                 "--ref-seq-col", columns[0],
